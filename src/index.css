@@ -16,7 +16,7 @@ body {
   font-size: calc(10px + 2vmin);
 
   /* -webkit-font-smoothing: antialiased; */
-  -moz-osx-font-smoothing: grayscale;
+  /* -moz-osx-font-smoothing: grayscale; */
 }
 
 code {

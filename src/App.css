@@ -6,20 +6,20 @@
   /* display: flex; */
   /* flex-direction: row; */
   position: absolute;
-  left: 100px;
-  top: 150px;
+  left: 10px;
+  top: 10px;
   height: 4vmin;
   pointer-events: stroke;
   /* align-items: center; */
   /* offset-position: right 3em bottom 10px; */
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 10s linear;
   }
 }
- */
+
 .App-header {
   background-color: #282c34;
   min-height: 20vh;
@@ -37,12 +37,14 @@
   color: #61dafb;
 }
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes App-logo-spin {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
-  } 
+  50% {
+    transform: translateX(10px) translateY(20px) rotate(180deg);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(360deg);
+  }
 }
- */
