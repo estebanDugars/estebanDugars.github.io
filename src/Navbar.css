@@ -1,8 +1,16 @@
 .navbar {
   display: flex;
   flex-direction: row;
+  margin-bottom: 0rem;
 }
 
-.nav-item {
-  margin: 1rem;
+a {
+  margin-left: 1rem;
+  margin-bottom: 0rem;
+  background-color: burlywood;
+  text-decoration: none;
+}
+
+a:visited {
+  color: red;
 }
