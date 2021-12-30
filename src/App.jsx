@@ -6,6 +6,7 @@ import About from "./Pages/About";
 import CMS from "./Pages/CMS";
 import Navbar from "./Navbar";
 import { Routes, Route } from "react-router-dom";
+import { userscomments } from "./data/usersComments";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/Articles" element={<Articles />} />
         <Route path="/Article" element={<Article />} />
         <Route path="/About" element={<About />} />
-        <Route path="/CMS" element={<CMS />} />
+        <Route path="/CMS" element={<CMS userscomments={userscomments} />} />
       </Routes>
     </div>
   );
