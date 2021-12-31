@@ -7,6 +7,7 @@ import CMS from "./Pages/CMS";
 import Navbar from "./Navbar";
 import { Routes, Route } from "react-router-dom";
 import { userscomments } from "./data/usersComments";
+import dataObj from "./data/imagesFaker";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" exact element={<HomePage />} />
-        <Route path="/Articles" element={<Articles />} />
+        <Route path="/Articles" element={<Articles data={dataObj.data} />} />
         <Route path="/Article" element={<Article />} />
         <Route path="/About" element={<About />} />
         <Route path="/CMS" element={<CMS userscomments={userscomments} />} />
