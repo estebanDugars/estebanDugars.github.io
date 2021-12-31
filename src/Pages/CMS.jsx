@@ -6,12 +6,12 @@ const styles = {
   h1: { margin: "2rem" },
 };
 
-const CMS = ({ userscomments }) => {
+const CMS = ({ userscomments, addpanier }) => {
   return (
     <>
       <h1 style={styles.h1}>CMS</h1>
       {userscomments.map((user) => (
-        <div key={user.id} style={styles.div}>
+        <div key={user.id} style={styles.div} onClick={addpanier}>
           {user.username}
           <span style={styles.span}>{user.id}</span>
         </div>
