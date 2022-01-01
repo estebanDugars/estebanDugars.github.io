@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /documents
+/public/bootswatch
 # testing
 /coverage
 

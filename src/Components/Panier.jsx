@@ -5,7 +5,7 @@ import HomePage from "./../Pages/HomePage";
 import Articles from "./../Pages/Articles";
 import Article from "./../Pages/Article";
 import About from "./../Pages/About";
-import CMS from "./../Pages/CMS";
+import Shop from "./../Pages/Shop";
 import dataObj from "./../data/imagesFaker";
 import { userscomments } from "./../data/usersComments";
 
@@ -18,13 +18,13 @@ const Panier = (props) => {
 
   return (
     <>
-      <div style={{ width: "100px", textAlign: "right", marginRight: "2rem", position: "relative", top: "-3rem", color: "white" }}>{clicCounter}</div>
+      <div style={{ width: "100px", textAlign: "right", marginRight: "2rem", position: "relative", top: "-4rem", color: "white" }}>{clicCounter}</div>
       <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/Articles" element={<Articles data={dataObj.data} />} />
         <Route path="/Article" element={<Article />} />
         <Route path="/About" element={<About />} />
-        <Route path="/CMS" element={<CMS userscomments={userscomments} addpanier={panierAdd} />} />
+        <Route path="/Shop" element={<Shop userscomments={userscomments} addpanier={panierAdd} />} />
       </Routes>
     </>
   );
