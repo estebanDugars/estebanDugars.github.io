@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import { userscomments } from "./data/usersComments";
 import dataObj from "./data/imagesFaker";
  */ import Panier from "./Components/Panier";
+import Themeswitch from "./Components/Themeswitch";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <header className="App-header">
         <p className="App-logo">LOGO</p>
         <Navbar />
+        <Themeswitch />
       </header>
       <Panier />
       {/* <Routes>
