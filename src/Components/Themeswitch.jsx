@@ -5,6 +5,11 @@ const Themeswitch = () => {
 
   useEffect(() => {
     let cssLink = document.querySelector("#bootswatch");
+    if (theme === "Morph") {
+      cssLink.href = `./bootswatch/${theme.toLowerCase()}/bootstrap.min.css`;
+      return;
+    }
+
     cssLink.href = `https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/${theme.toLowerCase()}/bootstrap.min.css`;
   }, [theme]);
 
@@ -20,6 +25,7 @@ const Themeswitch = () => {
         <option value="Materia">Material Theme</option>
         <option value="Sketchy">Sketchy</option>
         <option value="Spacelab">Spacelab</option>
+        <option value="Morph">Morph</option>
       </select>
     </div>
   );
