@@ -11,13 +11,13 @@ import dataObj from "./data/imagesFaker";
  */ import Panier from "./Components/Panier";
 import Themeswitch from "./Components/Themeswitch";
 
-function App() {
+function App({ cssLib }) {
   return (
     <div className="App">
       <header className="App-header">
         <p className="App-logo">LOGO</p>
         <Navbar />
-        <Themeswitch />
+        <Themeswitch cssLink={cssLib} />
       </header>
       <Panier />
       {/* <Routes>

@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-const Themeswitch = () => {
+const Themeswitch = ({ cssLink }) => {
   const [theme, setTheme] = useState("Spacelab");
 
   useEffect(() => {
-    let cssLink = document.querySelector("#bootswatch");
+    //let cssLink = document.head.querySelector("#bootswatch");
     if (theme === "Morph") {
       cssLink.href = `./bootswatch/${theme.toLowerCase()}/bootstrap.min.css`;
       return;
     }
 
     cssLink.href = `https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/${theme.toLowerCase()}/bootstrap.min.css`;
-  }, [theme]);
+  }, [theme, cssLink]);
 
   const test = (ev) => {
     setTheme(ev.currentTarget.value);
   };
   return (
-    <div className="form-group">
+    <div className="form-group mb-0">
       <label htmlFor="exampleSelect1" className="form-label mt-1 p-3">
         Change Theme
       </label>
