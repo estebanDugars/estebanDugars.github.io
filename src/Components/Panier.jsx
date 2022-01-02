@@ -18,7 +18,9 @@ const Panier = (props) => {
 
   return (
     <>
-      <div style={{ width: "100px", textAlign: "right", marginRight: "2rem", top: "3rem", color: "black" }}>{clicCounter}</div>
+      <div style={{ width: "100px", textAlign: "right", marginRight: "2rem", position: "absolute", top: "5rem", left: "1rem", color: "white", pointerEvents: "none" }}>
+        {clicCounter}
+      </div>
       <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/Articles" element={<Articles data={dataObj.data} />} />
