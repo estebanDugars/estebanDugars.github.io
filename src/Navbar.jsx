@@ -8,12 +8,14 @@ const Navbar = () => {
   useEffect(() => {
     const menuToggle = document.getElementById("navbarColor01");
     const bsCollapse = new bootstrap.Collapse(menuToggle);
-    document.addEventListener("keydown", function (event) {
+    document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         //do something
         bsCollapse.toggle();
-        console.log("toggle");
       }
+    });
+    menuToggle.addEventListener("click", (event) => {
+      bsCollapse.toggle();
     });
   }, []);
 
@@ -31,7 +33,7 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon" style={{ fontSize: "100%", color: "red" }}></span>
         </button>
-        <div className="navbar-collapse" id="navbarColor01">
+        <div className="navbar-collapse collapse" id="navbarColor01">
           <ul className="navbar-nav me-auto">
             <span> &hearts;</span>
 
