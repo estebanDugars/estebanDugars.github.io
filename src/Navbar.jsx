@@ -1,27 +1,64 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import "./App.css";
+import * as bootstrap from "bootstrap";
 
 const Navbar = () => {
+  useEffect(() => {
+    const menuToggle = document.getElementById("navbarColor01");
+    const bsCollapse = new bootstrap.Collapse(menuToggle);
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        //do something
+        bsCollapse.toggle();
+        console.log("toggle");
+      }
+    });
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary app-header">
       <div className="container-fluid">
-        <NavLink className="btn btn-outline-primary" to="/">
-          Home
-        </NavLink>
-        <NavLink className="btn btn-outline-primary" to="/Articles">
-          Articles
-        </NavLink>
-        <NavLink className="btn btn-outline-primary" to="/Article">
-          Article
-        </NavLink>
-        <NavLink className="btn btn-outline-primary" to="/About">
-          About
-        </NavLink>
-        <NavLink className="btn btn-outline-primary" to="/Shop">
-          Shop
-        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor01"
+          aria-controls="navbarColor01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" style={{ fontSize: "100%", color: "red" }}></span>
+        </button>
+        <div className="navbar-collapse" id="navbarColor01">
+          <ul className="navbar-nav me-auto">
+            <span> &hearts;</span>
+
+            <NavLink className="btn btn-outline-primary " to="/">
+              Home
+            </NavLink>
+            <NavLink className="btn btn-outline-primary" to="/Articles">
+              Articles
+            </NavLink>
+            <NavLink className="btn btn-outline-primary" to="/Article">
+              Article
+            </NavLink>
+            <NavLink className="btn btn-outline-primary" to="/About">
+              About
+            </NavLink>
+            <NavLink className="btn btn-outline-primary" to="/Shop">
+              Shop
+            </NavLink>
+
+            <form className="d-lg-flex">
+              <input className="form-control me-sm-2 my-2 my-sm-0" type="text" placeholder="Search" style={{ marginLeft: "0.5rem" }} />
+              <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+                Search
+              </button>
+            </form>
+          </ul>
+        </div>
       </div>
     </nav>
   );

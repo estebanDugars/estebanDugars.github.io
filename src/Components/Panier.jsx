@@ -18,7 +18,7 @@ const Panier = (props) => {
 
   return (
     <>
-      <div style={{ width: "100px", textAlign: "right", marginRight: "2rem", position: "absolute", top: "5rem", left: "1rem", color: "white", pointerEvents: "none" }}>
+      <div style={{ width: "100px", textAlign: "left", marginRight: "0.2rem", position: "absolute", top: "0vh", right: "0vh", color: "white", pointerEvents: "none" }}>
         {clicCounter}
       </div>
       <Routes>
