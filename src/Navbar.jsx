@@ -26,7 +26,7 @@ const Navbar = () => {
 
     $("#togglerButton").on({
       mouseenter: function () {
-        $(".App-header").append($("<span style='position:absolute;left:0rem;top:0rem;color:red'> *** You can close/expand menu with ESC key</span>"));
+        $(".App-header").append($("<span style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'> *** You can close/expand menu with ESC key</span>"));
       },
       mouseleave: function () {
         $(".App-header").find("span").last().remove();
@@ -35,7 +35,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary app-header">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary app-header rounded-top">
       <div className="container-fluid">
         <button
           className="navbar-toggler"

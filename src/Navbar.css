@@ -66,3 +66,8 @@ a:active {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.rounded-top {
+  border-top-left-radius: 2rem !important;
+  border-top-right-radius: 2rem !important;
+}
