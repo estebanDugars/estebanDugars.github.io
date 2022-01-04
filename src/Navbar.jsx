@@ -35,7 +35,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary app-header">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary app-header rounded-top">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
