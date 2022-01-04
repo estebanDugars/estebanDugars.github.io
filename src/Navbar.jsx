@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import "./App.css";
 import * as bootstrap from "bootstrap";
+import $ from "jquery";
 
 const Navbar = () => {
   useEffect(() => {
@@ -10,6 +11,7 @@ const Navbar = () => {
     const bsCollapse = new bootstrap.Collapse(menuToggle, {
       toggle: false,
     });
+
     let style = getComputedStyle(menuToggle);
 
     document.addEventListener("keydown", (event) => {
@@ -20,6 +22,15 @@ const Navbar = () => {
     });
     menuToggle.addEventListener("click", (event) => {
       style.display === "none" && bsCollapse?.toggle();
+    });
+
+    $("#togglerButton").on({
+      mouseenter: function () {
+        $(".App-header").append($("<span style='position:absolute;left:0rem;top:0rem;color:red'> *** You can close/expand menu with ESC key</span>"));
+      },
+      mouseleave: function () {
+        $(".App-header").find("span").last().remove();
+      },
     });
   }, []);
 
