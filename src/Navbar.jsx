@@ -7,15 +7,19 @@ import * as bootstrap from "bootstrap";
 const Navbar = () => {
   useEffect(() => {
     const menuToggle = document.getElementById("navbarColor01");
-    const bsCollapse = new bootstrap.Collapse(menuToggle);
+    const bsCollapse = new bootstrap.Collapse(menuToggle, {
+      toggle: false,
+    });
+    let style = getComputedStyle(menuToggle);
+
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         //do something
-        bsCollapse.toggle();
+        style.display !== "flex" && bsCollapse?.toggle();
       }
     });
     menuToggle.addEventListener("click", (event) => {
-      bsCollapse.toggle();
+      style.display === "none" && bsCollapse?.toggle();
     });
   }, []);
 
@@ -30,6 +34,7 @@ const Navbar = () => {
           aria-controls="navbarColor01"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          id="togglerButton"
         >
           <span className="navbar-toggler-icon" style={{ fontSize: "100%", color: "red" }}></span>
         </button>
