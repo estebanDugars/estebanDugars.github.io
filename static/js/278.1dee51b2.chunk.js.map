@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/278.1dee51b2.chunk.js","mappings":"yIASA,UANgB,WACZ,OACI","sources":["Pages/Article.jsx"],"sourcesContent":["\r\nimport React from 'react';\r\n\r\nconst Article = () => {\r\n    return (\r\n        <h1>Article</h1>\r\n    );\r\n};\r\n\r\nexport default Article;"],"names":[],"sourceRoot":""}
