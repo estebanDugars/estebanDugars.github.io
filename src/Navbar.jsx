@@ -26,7 +26,8 @@ const Navbar = () => {
 
     $("#togglerButton").on({
       mouseenter: function () {
-        $(".App-header").append($("<span style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'> *** You can close/expand menu with ESC key</span>"));
+        const newLocal = "<span style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'> *** You can close/expand menu with ESC key</span>";
+        $(".App-header").append($(newLocal));
       },
       mouseleave: function () {
         $(".App-header").find("span").last().remove();
