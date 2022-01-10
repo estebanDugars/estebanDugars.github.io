@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+/* import "./Navbar.css"; */
 import "./App.css";
 import * as bootstrap from "bootstrap";
 import $ from "jquery";
@@ -36,7 +36,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary app-header rounded-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary rounded-top">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -54,19 +54,19 @@ const Navbar = () => {
           <ul className="navbar-nav me-auto">
             <span> &hearts;</span>
 
-            <NavLink className="btn btn-outline-primary " to="/">
+            <NavLink className="btn btn-outline-secondary " to="/">
               Home
             </NavLink>
-            <NavLink className="btn btn-outline-primary" to="/Articles">
+            <NavLink className="btn btn-outline-secondary" to="/Articles">
               Articles
             </NavLink>
-            <NavLink className="btn btn-outline-primary" to="/Article">
+            <NavLink className="btn btn-outline-secondary" to="/Article">
               Article
             </NavLink>
-            <NavLink className="btn btn-outline-primary" to="/About">
+            <NavLink className="btn btn-outline-secondary" to="/About">
               About
             </NavLink>
-            <NavLink className="btn btn-outline-primary" to="/Shop">
+            <NavLink className="btn btn-outline-secondary" to="/Shop">
               Shop
             </NavLink>
 

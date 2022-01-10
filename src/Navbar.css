@@ -6,7 +6,7 @@
   flex-wrap: wrap;
 }
 
-a {
+/* a {
   margin-left: 1rem;
   margin-bottom: 0rem;
   background-color: #282c34;
@@ -14,32 +14,14 @@ a {
   border-radius: 1rem 1rem 0 0;
   padding: 0.5rem 1rem 0.2rem 1rem;
 }
-
-.active {
+ */
+/* .active {
   display: flex;
   background-color: white;
   flex-basis: auto;
 }
-
+ */
 /* unvisited link */
-a:link {
-  color: #ff0000;
-}
-
-/* visited link */
-a:visited {
-  color: #00ff00;
-}
-
-/* mouse over link */
-a:hover {
-  color: #ff00ff;
-}
-
-/* selected link */
-a:active {
-  color: #0000ff;
-}
 
 .tooltip {
   position: relative;
