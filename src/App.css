@@ -49,3 +49,7 @@
     transform: translateX(0px) translateY(0px) rotate(360deg);
   }
 }
+
+:root {
+  font-size: calc(10px + 0.5vmin);
+}

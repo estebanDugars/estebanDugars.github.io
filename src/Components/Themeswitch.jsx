@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 const Themeswitch = ({ cssLink }) => {
-  const [theme, setTheme] = useState("Spacelab");
+  const [theme, setTheme] = useState("quartz");
 
   useEffect(() => {
     //let cssLink = document.head.querySelector("#bootswatch");
-    if (theme === "Morph") {
-      cssLink.href = `./bootswatch/${theme.toLowerCase()}/bootstrap.min.css`;
-      return;
-    }
+    //if (theme === "Morph") {
+    cssLink.href = `./bootswatch/${theme.toLowerCase()}/bootstrap.min.css`;
+    //  return;
+    //}
 
-    cssLink.href = `https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/${theme.toLowerCase()}/bootstrap.min.css`;
+    //cssLink.href = `https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/${theme.toLowerCase()}/bootstrap.min.css`;
   }, [theme, cssLink]);
 
   const test = (ev) => {
@@ -21,7 +21,7 @@ const Themeswitch = ({ cssLink }) => {
       <label htmlFor="exampleSelect1" className="form-label mt-1 p-3">
         Change Theme
       </label>
-      <select onChange={(event) => test(event)} className="form-select" id="exampleSelect1" defaultValue={"Spacelab"}>
+      <select onChange={(event) => test(event)} className="form-select" id="exampleSelect1" defaultValue={"quartz"}>
         <option value="Materia">Material Theme</option>
         <option value="Sketchy">Sketchy</option>
         <option value="Spacelab">Spacelab</option>
