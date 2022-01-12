@@ -11,9 +11,9 @@ const Articles = ({ data }) => {
   return (
     <>
       <h1 style={styles.h1}>Articles</h1>
-      <div className="container-fluid">
-        <div className="row ">
-          {data.map((user) => (
+      <div className="d-flex flex-row  flex-fill  flex-wrap justify-content-center fs-5 ">
+        {data.map((user) => (
+          <div>
             <div key={user.id} className="card border-light mb-3" style={styles.card}>
               <div className="card-header">
                 {user.first_name + " "}
@@ -24,8 +24,8 @@ const Articles = ({ data }) => {
                 <img src={user.avatar_Url} alt="" />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </>
   );
