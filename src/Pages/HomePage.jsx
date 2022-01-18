@@ -1,10 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [value, setValue] = useState("");
+  let navigate = useNavigate();
 
   const handleChange = (event) => {
     setValue(event.target.value);
+  };
+
+  const validateCredentials = () => {
+    return value === "admin";
+  };
+
+  const handleSubmit = () => {
+    debugger;
+    if (validateCredentials()) navigate("/About");
   };
 
   return (
@@ -16,9 +27,14 @@ const HomePage = () => {
             <hr />
           </div>
 
-          <label htmlFor="inputField">Value :</label>
-          <input type="text" value={value} onChange={handleChange} id="inputField" />
-          <p>You entered: {value}</p>
+          <form action="">
+            <label htmlFor="inputField">Value :</label>
+            <input type="text" value={value} onChange={handleChange} id="inputField" />
+            <p>You entered: {value}</p>
+            <button type="submit" onClick={handleSubmit}>
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </main>

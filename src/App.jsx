@@ -15,7 +15,9 @@ function App({ cssLib }) {
   return (
     <div className="App">
       <header className="App-header">
-        <p className="App-logo">LOGO</p>
+        <p className="App-logo" style={{ pointerEvents: "none" }}>
+          LOGO
+        </p>
         <Navbar />
         <Themeswitch cssLink={cssLib} />
       </header>

@@ -24,13 +24,26 @@ const Navbar = () => {
       style.display === "none" && bsCollapse?.toggle();
     });
 
+    const myToast = `<div id="toast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'>
+        <div class="toast-header">
+          <strong class="me-auto">Bootstrap</strong>
+          <small>${Date.now()}</small>
+          <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="toast-body">*** You can close/expand menu with ESC key</div>
+      </div>`;
+
     $("#togglerButton").on({
       mouseenter: function () {
-        const newLocal = "<span style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'> *** You can close/expand menu with ESC key</span>";
+        /* const newLocal = "<span style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'> *** You can close/expand menu with ESC key</span>"; */
+        const newLocal = myToast;
         $(".App-header").append($(newLocal));
       },
       mouseleave: function () {
-        $(".App-header").find("span").last().remove();
+        /* $(".App-header").find("toast").last().remove(); */
+        $(".App-header").find("#toast").remove();
       },
     });
   }, []);

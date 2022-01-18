@@ -4,13 +4,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const cssref = document.head.querySelector("#bootswatch");
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App cssLib={cssref} />
+      <DndProvider backend={HTML5Backend}>
+        <App cssLib={cssref} />
+      </DndProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
