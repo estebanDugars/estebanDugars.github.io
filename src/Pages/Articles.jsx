@@ -10,10 +10,10 @@ const styles = {
 let datas = dataObj.data;
 
 const Articles = ({ search }) => {
-  let re = new RegExp("" + search, "g");
+  let re = new RegExp("" + search, "gm");
 
   let dataf = datas.filter((user) => {
-    return re.test(user.first_name);
+    return re.test(user.first_name) || re.test(user.last_name);
   });
 
   console.log(dataf.length);

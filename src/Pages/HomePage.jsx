@@ -14,7 +14,6 @@ const HomePage = () => {
   };
 
   const handleSubmit = () => {
-    debugger;
     if (validateCredentials()) navigate("/About");
   };
 
