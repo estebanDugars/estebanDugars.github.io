@@ -2,7 +2,6 @@ import React, { lazy, Suspense, useState } from "react";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 // import HomePage from "./../Pages/HomePage";
-import dataObj from "./../data/imagesFaker";
 import { userscomments } from "./../data/usersComments";
 const HomePage = lazy(() => import("./../Pages/HomePage"));
 const Articles = lazy(() => import("./../Pages/Articles"));
@@ -25,7 +24,7 @@ const Panier = (props) => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" exact element={<HomePage />} />
-          <Route path="/Articles" element={<Articles data={dataObj.data} />} />
+          <Route path="/Articles" element={<Articles search={props.search} />} />
           <Route path="/Article" element={<Article />} />
           <Route path="/About" element={<About />} />
           <Route path="/Shop" element={<Shop userscomments={userscomments} addpanier={panierAdd} />} />

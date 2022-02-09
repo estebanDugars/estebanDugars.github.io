@@ -5,7 +5,11 @@ import "./App.css";
 import * as bootstrap from "bootstrap";
 import $ from "jquery";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const updateSearch = (event) => {
+    props.search(event.target.value);
+  };
+
   useEffect(() => {
     const menuToggle = document.getElementById("navbarColor01");
     const bsCollapse = new bootstrap.Collapse(menuToggle, {
@@ -27,7 +31,7 @@ const Navbar = () => {
     const myToast = `<div id="toast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'>
         <div class="toast-header">
           <strong class="me-auto">Bootstrap</strong>
-          <small>${Date.now()}</small>
+          <small>${new Date().getTime()}</small>
           <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
             <span aria-hidden="true"></span>
           </button>
@@ -38,12 +42,16 @@ const Navbar = () => {
     $("#togglerButton").on({
       mouseenter: function () {
         /* const newLocal = "<span style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'> *** You can close/expand menu with ESC key</span>"; */
-        const newLocal = myToast;
-        $(".App-header").append($(newLocal));
+        if (!document.getElementById("toast")) {
+          const newLocal = myToast;
+          $(".App-header").append($(newLocal));
+        }
       },
       mouseleave: function () {
         /* $(".App-header").find("toast").last().remove(); */
-        $(".App-header").find("#toast").remove();
+        setTimeout(function () {
+          $(".App-header").find("#toast").remove();
+        }, 2000);
       },
     });
   }, []);
@@ -84,7 +92,7 @@ const Navbar = () => {
             </NavLink>
 
             <form className="d-lg-flex">
-              <input className="form-control me-sm-2 my-2 my-sm-0" type="text" placeholder="Search" style={{ marginLeft: "0.5rem" }} />
+              <input className="form-control me-sm-2 my-2 my-sm-0" type="text" placeholder="Search" style={{ marginLeft: "0.5rem" }} onChange={(ev) => updateSearch(ev)} />
               <button className="btn btn-secondary my-2 my-sm-0" type="submit">
                 Search
               </button>

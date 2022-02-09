@@ -10,18 +10,22 @@ import { userscomments } from "./data/usersComments";
 import dataObj from "./data/imagesFaker";
  */ import Panier from "./Components/Panier";
 import Themeswitch from "./Components/Themeswitch";
+import { useState } from "react";
 
 function App({ cssLib }) {
+  const [searchField, setSearchField] = useState("");
+
   return (
     <div className="App">
       <header className="App-header">
         <p className="App-logo" style={{ pointerEvents: "none" }}>
           LOGO
         </p>
-        <Navbar />
+        <p>{searchField}</p>
+        <Navbar search={setSearchField} />
         <Themeswitch cssLink={cssLib} />
       </header>
-      <Panier />
+      <Panier search={searchField} />
       {/* <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/Articles" element={<Articles data={dataObj.data} />} />
