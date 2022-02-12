@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = ({ setLogged }) => {
   const [value, setValue] = useState("");
   let navigate = useNavigate();
 
@@ -13,8 +13,12 @@ const HomePage = () => {
     return value === "admin";
   };
 
-  const handleSubmit = () => {
-    if (validateCredentials()) navigate("/About");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (validateCredentials()) {
+      setLogged(true);
+      navigate("/About");
+    }
   };
 
   return (
@@ -26,14 +30,13 @@ const HomePage = () => {
             <hr />
           </div>
 
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <label htmlFor="inputField">Value :</label>
             <input type="text" value={value} onChange={handleChange} id="inputField" />
             <p>You entered: {value}</p>
-            <button type="submit" onClick={handleSubmit}>
-              Submit
-            </button>
+            <button type="submit">Submit</button>
           </form>
+          <Outlet />
         </div>
       </div>
     </main>

@@ -14,6 +14,7 @@ import { useState } from "react";
 
 function App({ cssLib }) {
   const [searchField, setSearchField] = useState("");
+  const [logged, setLogged] = useState(false);
 
   return (
     <div className="App">
@@ -22,10 +23,10 @@ function App({ cssLib }) {
           LOGO
         </p>
         <p>{searchField}</p>
-        <Navbar search={setSearchField} />
+        <Navbar logged={logged} search={setSearchField} />
         <Themeswitch cssLink={cssLib} />
       </header>
-      <Panier search={searchField} />
+      <Panier setLog={setLogged} search={searchField} />
       {/* <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/Articles" element={<Articles data={dataObj.data} />} />

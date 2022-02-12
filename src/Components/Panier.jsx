@@ -9,7 +9,7 @@ const Article = lazy(() => import("./../Pages/Article"));
 const About = lazy(() => import("./../Pages/About"));
 const Shop = lazy(() => import("./../Pages/Shop"));
 
-const Panier = (props) => {
+const Panier = ({ setLog, search }) => {
   const [clicCounter, setClicCounter] = useState(0);
 
   const panierAdd = () => {
@@ -23,8 +23,10 @@ const Panier = (props) => {
       </div>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" exact element={<HomePage />} />
-          <Route path="/Articles" element={<Articles search={props.search} />} />
+          <Route path="/" element={<HomePage setLogged={setLog} />}>
+            <Route path="secret" element={<div>Secret passage</div>} />
+          </Route>
+          <Route path="/Articles" element={<Articles search={search} />} />
           <Route path="/Article" element={<Article />} />
           <Route path="/About" element={<About />} />
           <Route path="/Shop" element={<Shop userscomments={userscomments} addpanier={panierAdd} />} />

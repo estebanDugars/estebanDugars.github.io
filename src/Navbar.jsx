@@ -5,9 +5,9 @@ import "./App.css";
 import * as bootstrap from "bootstrap";
 import $ from "jquery";
 
-const Navbar = (props) => {
+const Navbar = ({ logged, search }) => {
   const updateSearch = (event) => {
-    props.search(event.target.value);
+    search(event.target.value);
   };
 
   useEffect(() => {
@@ -74,7 +74,6 @@ const Navbar = (props) => {
         <div className="navbar-collapse collapse" id="navbarColor01">
           <ul className="navbar-nav me-auto">
             <span> &hearts;</span>
-
             <NavLink className="btn btn-outline-secondary " to="/">
               Home
             </NavLink>
@@ -84,13 +83,14 @@ const Navbar = (props) => {
             <NavLink className="btn btn-outline-secondary" to="/Article">
               Article
             </NavLink>
-            <NavLink className="btn btn-outline-secondary" to="/About">
-              About
-            </NavLink>
+            {logged && (
+              <NavLink className="btn btn-outline-secondary" to="/About">
+                About
+              </NavLink>
+            )}
             <NavLink className="btn btn-outline-secondary" to="/Shop">
               Shop
             </NavLink>
-
             <form className="d-lg-flex">
               <input className="form-control me-sm-2 my-2 my-sm-0" type="text" placeholder="Search" style={{ marginLeft: "0.5rem" }} onChange={(ev) => updateSearch(ev)} />
               <button className="btn btn-secondary my-2 my-sm-0" type="submit">
