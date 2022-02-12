@@ -9,7 +9,7 @@ const Article = lazy(() => import("./../Pages/Article"));
 const About = lazy(() => import("./../Pages/About"));
 const Shop = lazy(() => import("./../Pages/Shop"));
 
-const Panier = ({ setLog, search }) => {
+const Panier = ({ logged, setLog, search }) => {
   const [clicCounter, setClicCounter] = useState(0);
 
   const panierAdd = () => {
@@ -23,7 +23,7 @@ const Panier = ({ setLog, search }) => {
       </div>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<HomePage setLogged={setLog} />}>
+          <Route path="/" element={<HomePage logged={logged} setLogged={setLog} />}>
             <Route path="secret" element={<div>Secret passage</div>} />
           </Route>
           <Route path="/Articles" element={<Articles search={search} />} />

@@ -26,7 +26,7 @@ function App({ cssLib }) {
         <Navbar logged={logged} search={setSearchField} />
         <Themeswitch cssLink={cssLib} />
       </header>
-      <Panier setLog={setLogged} search={searchField} />
+      <Panier logged={logged} setLog={setLogged} search={searchField} />
       {/* <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/Articles" element={<Articles data={dataObj.data} />} />
