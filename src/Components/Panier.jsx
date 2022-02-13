@@ -6,7 +6,7 @@ import { userscomments } from "./../data/usersComments";
 const HomePage = lazy(() => import("./../Pages/HomePage"));
 const Articles = lazy(() => import("./../Pages/Articles"));
 const Article = lazy(() => import("./../Pages/Article"));
-const About = lazy(() => import("./../Pages/About"));
+const Kanban = lazy(() => import("./../Pages/Kanban"));
 const Shop = lazy(() => import("./../Pages/Shop"));
 
 const Panier = ({ logged, setLog, search }) => {
@@ -28,7 +28,7 @@ const Panier = ({ logged, setLog, search }) => {
           </Route>
           <Route path="/Articles" element={<Articles search={search} />} />
           <Route path="/Article" element={<Article />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/Kanban" element={<Kanban />} />
           <Route path="/Shop" element={<Shop userscomments={userscomments} addpanier={panierAdd} />} />
         </Routes>
       </Suspense>

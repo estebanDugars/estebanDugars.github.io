@@ -41,7 +41,7 @@ const Article = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#0">
-                  About
+                  Kanban
                 </a>
               </li>
               <li className="nav-item dropdown">

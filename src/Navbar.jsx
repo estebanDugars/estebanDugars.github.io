@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 /* import "./Navbar.css"; */
 import "./App.css";
 import * as bootstrap from "bootstrap";
 import $ from "jquery";
 
-const Navbar = ({ logged, search }) => {
+const Navbar = ({ logged, setLogged, search }) => {
+  let navigate = useNavigate();
+
   const updateSearch = (event) => {
     search(event.target.value);
   };
@@ -84,8 +86,8 @@ const Navbar = ({ logged, search }) => {
               Article
             </NavLink>
             {logged && (
-              <NavLink className="btn btn-outline-secondary" to="/About">
-                About
+              <NavLink className="btn btn-outline-secondary" to="/Kanban">
+                Kanban
               </NavLink>
             )}
             <NavLink className="btn btn-outline-secondary" to="/Shop">
@@ -96,6 +98,17 @@ const Navbar = ({ logged, search }) => {
               <button className="btn btn-secondary my-2 my-sm-0" type="submit">
                 Search
               </button>
+              {logged && (
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => {
+                    setLogged(false);
+                    navigate("/");
+                  }}
+                >
+                  LogOut
+                </button>
+              )}
             </form>
           </ul>
         </div>

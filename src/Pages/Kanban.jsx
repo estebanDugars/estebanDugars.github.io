@@ -1,12 +1,12 @@
 import React from "react";
-import { useDrag, useDrop } from "react-dnd";
-import { useState } from "react";
+/* import { useDrag, useDrop } from "react-dnd";
+import { useState } from "react"; */
 import "./about.css";
 
-const About = () => {
+const Kanban = () => {
   return (
     <>
-      <h1>About</h1>
+      <h1>Kanban</h1>
       <br />
       <hr />
       <div className="container fs-4">
@@ -17,7 +17,7 @@ const About = () => {
   );
 };
 
-export default About;
+export default Kanban;
 
 const MovableItem = () => {
   return <div className="movable-item">We will move this item</div>;

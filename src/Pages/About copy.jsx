@@ -2,17 +2,17 @@ import React from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { useState } from "react";
 
-const About = () => {
+const Kanban = () => {
   return (
     <>
-      <h1>About</h1>
+      <h1>Kanban</h1>
       <Box />
       <Bucket />
     </>
   );
 };
 
-export default About;
+export default Kanban;
 
 function Box() {
   const [{ isDragging }, drag, dragPreview] = useDrag(() => ({

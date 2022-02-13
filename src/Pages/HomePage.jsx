@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
+const styles = {
+  loginBut: {
+    marginLeft: "1rem",
+  },
+};
+
 const HomePage = ({ logged, setLogged }) => {
   const [value, setValue] = useState("");
 
@@ -18,7 +24,7 @@ const HomePage = ({ logged, setLogged }) => {
     event.preventDefault();
     if (validateCredentials()) {
       setLogged(true);
-      navigate("/About");
+      navigate("/Kanban");
     } else {
       setValue("");
     }
@@ -34,11 +40,13 @@ const HomePage = ({ logged, setLogged }) => {
           </div>
           {!logged && (
             <form onSubmit={handleSubmit}>
-              <label htmlFor="inputField">Value :</label>
-              <input type="text" value={value} onChange={handleChange} placeholder="admin" />
-              <p>You entered: {value}</p>
-              <button type="submit">Submit</button>
-              <button type="reset" value="Reset" onClick={() => setValue("")}>
+              <label htmlFor="inputField">Value :&nbsp;</label>
+              <input className="my-2" type="text" value={value} onChange={handleChange} placeholder="admin" />
+              <p>You entered : {value}</p>
+              <button className="btn btn-outline-secondary" type="submit">
+                Submit
+              </button>
+              <button className="btn btn-outline-secondary" style={styles.loginBut} type="reset" value="Reset" onClick={() => setValue("")}>
                 Reset
               </button>
             </form>

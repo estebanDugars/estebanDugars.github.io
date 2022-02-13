@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 /* import HomePage from "./Pages/HomePage";
 import Articles from "./Pages/Articles";
 import Article from "./Pages/Article";
-import About from "./Pages/About";
+import Kanban from "./Pages/Kanban";
 import CMS from "./Pages/CMS";
 import { Routes, Route } from "react-router-dom";
 import { userscomments } from "./data/usersComments";
@@ -23,7 +23,7 @@ function App({ cssLib }) {
           LOGO
         </p>
         <p>{searchField}</p>
-        <Navbar logged={logged} search={setSearchField} />
+        <Navbar logged={logged} setLogged={setLogged} search={setSearchField} />
         <Themeswitch cssLink={cssLib} />
       </header>
       <Panier logged={logged} setLog={setLogged} search={searchField} />
@@ -31,7 +31,7 @@ function App({ cssLib }) {
         <Route path="/" exact element={<HomePage />} />
         <Route path="/Articles" element={<Articles data={dataObj.data} />} />
         <Route path="/Article" element={<Article />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/Kanban" element={<Kanban />} />
         <Route path="/CMS" element={<CMS userscomments={userscomments} />} />
       </Routes> */}
     </div>
