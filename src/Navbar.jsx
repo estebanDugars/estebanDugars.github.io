@@ -103,7 +103,7 @@ const Navbar = ({ logged, setLogged, search }) => {
                   className="btn btn-outline-secondary"
                   onClick={() => {
                     setLogged(false);
-                    navigate("/");
+                    navigate("/", { replace: true });
                   }}
                 >
                   LogOut

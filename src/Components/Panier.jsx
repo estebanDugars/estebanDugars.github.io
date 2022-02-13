@@ -28,8 +28,9 @@ const Panier = ({ logged, setLog, search }) => {
           </Route>
           <Route path="/Articles" element={<Articles search={search} />} />
           <Route path="/Article" element={<Article />} />
-          <Route path="/Kanban" element={<Kanban />} />
+          {logged && <Route path="/Kanban" element={<Kanban />} />}
           <Route path="/Shop" element={<Shop userscomments={userscomments} addpanier={panierAdd} />} />
+          <Route path="/*" element={<div>404 nowhere to be found</div>}></Route>
         </Routes>
       </Suspense>
     </>
