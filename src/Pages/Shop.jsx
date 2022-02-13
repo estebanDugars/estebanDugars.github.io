@@ -29,7 +29,7 @@ const Shop = ({ userscomments, addpanier }) => {
 
     const idToMove = ev.dataTransfer.getData("text");
     const refToMove = document.getElementById(idToMove);
-    refToMove.className = "ms-0";
+    refToMove.classList.add("ms-0", "swing-top-fwd");
     refToMove.style.maxWidth = "20rem";
     //refToMove.className = "flex-fill w-auto";
     ev.target.appendChild(refToMove);
@@ -50,7 +50,7 @@ const Shop = ({ userscomments, addpanier }) => {
           {/* because of the mobile 1st approach of bootstrap hence bootswatch, col-6 here is meant from smallest to the next break point here xl */}
           {userscomments.map((user) => (
             <div key={user.id} className="col-6 col-xl-4" onClick={addpanier} id={user.id} draggable="true" onDragStart={(ev) => initiateDrag(ev)} style={styles.item}>
-              <div className="card text-white bg-dark mb-3 ms-1 swing-top-fwd">
+              <div className="card text-white bg-dark mb-3 ms-1">
                 <div className="card-header">{user.username}</div>
                 <div className="card-body">
                   <h4 className="card-title">{user.id}</h4>
