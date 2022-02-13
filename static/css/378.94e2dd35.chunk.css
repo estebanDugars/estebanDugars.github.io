@@ -1,0 +1,2 @@
+.container{display:flex;flex-direction:row;justify-content:space-around}.column{border-radius:10px;box-shadow:10px 10px 16px rgba(0,0,0,.5);display:flex;flex-wrap:wrap;height:400px;justify-content:center;margin:20px;width:200px}.first-column{background-color:#f5ffea}.second-column{background-color:#fffbf5}.movable-item{align-items:center;background-color:#fff3f3;border-radius:10px;box-shadow:0 0 3px rgba(0,0,0,.5);display:flex;height:100px;justify-content:center;margin:10px auto;width:170px}
+/*# sourceMappingURL=378.94e2dd35.chunk.css.map*/
