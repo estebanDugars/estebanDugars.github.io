@@ -10,10 +10,13 @@ const styles = {
   /*  card: { maxWidth: "20rem" }, */
 };
 
+let panierInitial = [];
+let boutiqueInitiale = [];
+
 const Shop = ({ addpanier }) => {
   /* let panierInit; */
-  const [articles, setArticles] = useState(userscomments);
-  const [panier, setPanier] = useState([]);
+  const [articles, setArticles] = useState(boutiqueInitiale.length > 0 ? boutiqueInitiale : userscomments);
+  const [panier, setPanier] = useState(panierInitial.length > 0 ? panierInitial : []);
 
   /* useEffect(() => {
     let length = sessionStorage.getItem("panierLength");
@@ -30,7 +33,6 @@ const Shop = ({ addpanier }) => {
   }, [panier]);
  */
   const initiateDrag = (ev) => {
-    console.log(`you dragged ${ev.target.id}`);
     ev.dataTransfer.setData("text", ev.target.id);
   };
 
@@ -43,17 +45,14 @@ const Shop = ({ addpanier }) => {
     //ev.target.innerText = "";
 
     const idToMove = ev.dataTransfer.getData("text");
-    const refToMove = document.getElementById(idToMove);
-    refToMove.classList.add("ms-0", "swing-top-fwd");
-    refToMove.style.maxWidth = "20rem";
-    //refToMove.className = "flex-fill w-auto";
-    //ev.target.appendChild(refToMove);
+
     let panierTemp = userscomments.filter((user) => {
       return user.id === Number(idToMove);
     });
-    setPanier(panier.concat(panierTemp));
-
-    setArticles(articles.filter((user) => user.id !== Number(idToMove)));
+    panierInitial = panier.concat(panierTemp);
+    boutiqueInitiale = articles.filter((user) => user.id !== Number(idToMove));
+    setPanier(panierInitial);
+    setArticles(boutiqueInitiale);
   };
 
   return (
@@ -63,11 +62,8 @@ const Shop = ({ addpanier }) => {
       <p>Vos articles ici</p>
       <div onDragOver={(ev) => alloDrop(ev)} onDrop={(ev) => drop(ev)} style={styles.panier} className="d-flex flex-row flex-wrap align-items-center justify-content-center fs-6 ">
         &nbsp; <br />
-        {console.log(panier)}
         {panier.map((user) => (
-          /* console.log(sessionStorage.getItem(`panier${user.id}`)); */
-
-          <div key={user.id} className="col-6 col-xl-4" id={user.id} style={styles.item}>
+          <div key={user.id} className="col-6 col-xl-4 ms-0 swing-top-fwd" id={user.id} style={{ ...styles.item, maxWidth: "20rem" }}>
             <div className="card text-white bg-dark mb-3 ms-1">
               <div className="card-header">{user.username}</div>
               <div className="card-body">
@@ -83,8 +79,6 @@ const Shop = ({ addpanier }) => {
       <div className="container-fluid">
         <div className="row ">
           {/* because of the mobile 1st approach of bootstrap hence bootswatch, col-6 here is meant from smallest to the next break point here xl */}
-          {console.log(articles)}
-
           {articles.map((user) => (
             <div key={user.id} className="col-6 col-xl-4" onClick={addpanier} id={user.id} draggable="true" onDragStart={(ev) => initiateDrag(ev)} style={styles.item}>
               <div className="card text-white bg-dark mb-3 ms-1">
