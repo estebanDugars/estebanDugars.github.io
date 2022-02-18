@@ -2,7 +2,6 @@ import React, { lazy, Suspense, useState } from "react";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 // import HomePage from "./../Pages/HomePage";
-import { userscomments } from "./../data/usersComments";
 const HomePage = lazy(() => import("./../Pages/HomePage"));
 const Articles = lazy(() => import("./../Pages/Articles"));
 const Article = lazy(() => import("./../Pages/Article"));
@@ -29,7 +28,7 @@ const Panier = ({ logged, setLog, search }) => {
           <Route path="/Articles" element={<Articles search={search} />} />
           <Route path="/Article" element={<Article />} />
           {logged && <Route path="/Kanban" element={<Kanban />} />}
-          <Route path="/Shop" element={<Shop userscomments={userscomments} addpanier={panierAdd} />} />
+          <Route path="/Shop" element={<Shop addpanier={panierAdd} />} />
           <Route path="/*" element={<div>404 nowhere to be found</div>}></Route>
         </Routes>
       </Suspense>
