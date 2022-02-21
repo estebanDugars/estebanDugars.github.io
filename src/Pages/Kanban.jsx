@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { nimp } from "../App";
 /* import { useDrag, useDrop } from "react-dnd";
 import { useState } from "react"; */
 import "./about.css";
+/* const { nimp } = nimpStateObject; */
 
 const Kanban = () => {
+  const [state] = useState(nimp);
+
   return (
     <>
-      <h1>Kanban</h1>
+      <h1>Kanban {state}</h1>
       <br />
       <hr />
       <div className="container fs-4">

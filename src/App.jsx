@@ -12,6 +12,14 @@ import dataObj from "./data/imagesFaker";
 import Themeswitch from "./Components/Themeswitch";
 import { useState } from "react";
 
+// Creation d'un Global state au niveau de app
+export let nimp = 10;
+export const setNimp = () => {
+  return ++nimp;
+};
+/* export const nimpStateObject = { nimp, setNimp }; */
+// fin global state
+
 function App({ cssLib }) {
   const [searchField, setSearchField] = useState("");
   const [logged, setLogged] = useState(false);

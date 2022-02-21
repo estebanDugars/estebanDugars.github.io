@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./shop.css";
 import { userscomments } from "./../data/usersComments";
+import { nimp, setNimp } from "../App";
+/* const { } = nimpStateObject; */
 
 const styles = {
   /* div: { width: "250px", display: "inline-block", margin: "0.5rem" },
@@ -17,6 +19,7 @@ const Shop = ({ addpanier }) => {
   /* let panierInit; */
   const [articles, setArticles] = useState(boutiqueInitiale.length > 0 ? boutiqueInitiale : userscomments);
   const [panier, setPanier] = useState(panierInitial.length > 0 ? panierInitial : []);
+  let [nimpstate, setNimpstate] = useState(nimp);
 
   /* useEffect(() => {
     let length = sessionStorage.getItem("panierLength");
@@ -59,7 +62,15 @@ const Shop = ({ addpanier }) => {
     <>
       <h1>Shop</h1>
       <h2>Liste des courses </h2>
-      <p>Vos articles ici</p>
+      <p>Vos articles ici {nimpstate}</p>
+      <button
+        onClick={() => {
+          setNimpstate(setNimp());
+        }}
+        style={{ borderWidth: "1px", backgroundColor: "transparent" }}
+      >
+        SetNimp
+      </button>
       <div onDragOver={(ev) => alloDrop(ev)} onDrop={(ev) => drop(ev)} style={styles.panier} className="d-flex flex-row flex-wrap align-items-center justify-content-center fs-6 ">
         &nbsp; <br />
         {panier.map((user) => (
