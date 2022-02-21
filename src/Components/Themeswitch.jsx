@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const Themeswitch = ({ cssLink }) => {
   let currTheme = localStorage.getItem("theme");
-  const [theme, setTheme] = useState(currTheme ? currTheme : "quartz");
+  const [theme, setTheme] = useState(currTheme ? currTheme : "sketchy");
 
   useEffect(() => {
     cssLink.href = `./bootswatch/${theme.toLowerCase()}/bootstrap.min.css`;
