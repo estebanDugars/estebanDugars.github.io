@@ -1,0 +1,42 @@
+.btn.btn-primary.btn-danger.btn-floating.btn-lg {
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+@media (min-width:992px) {
+  .d-lg-none {
+    display: block !important;
+  }
+}
+
+hr.star-dark:after {
+  content: " ";
+  color: #2c3e50;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.bg-primary {
+  background-color: rgb(56, 46, 96) !important;
+}
+
+.progress-bar-animated {
+  -webkit-animation: progress 1.5s ease-in-out forwards;
+  animation: progress 1.5s ease-in-out forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20%;
+  }
+}
+
+.progress, .progress-bar {
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+
