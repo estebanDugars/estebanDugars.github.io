@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useState } from "react";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
+import { AtomSpinner } from "react-epic-spinners";
 // import HomePage from "./../Pages/HomePage";
 const HomePage = lazy(() => import("./../Pages/HomePage"));
 const Articles = lazy(() => import("./../Pages/Articles"));
@@ -20,7 +21,7 @@ const Panier = ({ logged, setLog, search }) => {
       <div style={{ width: "100px", textAlign: "left", marginRight: "0.2rem", position: "absolute", top: "0vh", right: "0vh", color: "white", pointerEvents: "none" }}>
         {clicCounter}
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<AtomSpinner color="blue" style={{ margin: "0 auto" }} />}>
         <Routes>
           <Route path="/" element={<HomePage logged={logged} setLogged={setLog} />}>
             <Route path="secret" element={<div>Secret passage</div>} />

@@ -16,8 +16,6 @@ const Articles = ({ search }) => {
     return re.test(user.first_name) || re.test(user.last_name);
   });
 
-  console.log(dataf.length);
-
   return (
     <>
       <h1 style={styles.h1}>Articles {search}</h1>
