@@ -1,16 +1,24 @@
 import React, { useState } from "react";
-import { nimp } from "../App";
+import { nimp, setNimp } from "../App";
 /* import { useDrag, useDrop } from "react-dnd";
 import { useState } from "react"; */
 import "./about.css";
 /* const { nimp } = nimpStateObject; */
 
 const Kanban = () => {
-  const [state] = useState(nimp);
+  const [state, setState] = useState(nimp);
 
   return (
     <>
       <h1>Kanban {state}</h1>
+      <button
+        onClick={() => {
+          setState(setNimp());
+        }}
+        style={{ borderWidth: "1px", backgroundColor: "transparent" }}
+      >
+        SetNimp
+      </button>
       <br />
       <hr />
       <div className="container fs-4">

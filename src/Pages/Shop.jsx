@@ -7,7 +7,16 @@ import { nimp, setNimp } from "../App";
 const styles = {
   /* div: { width: "250px", display: "inline-block", margin: "0.5rem" },
   span: { marginLeft: "2rem" }, */
-  panier: { display: "flex", border: "1px solid black", height: "auto", padding: "4rem 0", margin: "1rem" },
+  panier: {
+    display: "flex",
+    border: "1px solid black",
+    paddingTop: "10rem",
+    margin: "1rem",
+    justifyContent: "flex-end",
+    alignContent: "flex-start",
+    flexDirection: "row-reverse",
+    flexWrap: "wrap",
+  },
   item: { minWidth: "10rem" },
   /*  card: { maxWidth: "20rem" }, */
 };
@@ -71,7 +80,7 @@ const Shop = ({ addpanier }) => {
       >
         SetNimp
       </button>
-      <div onDragOver={(ev) => alloDrop(ev)} onDrop={(ev) => drop(ev)} style={styles.panier} className="d-flex flex-row flex-wrap align-items-center justify-content-center fs-6 ">
+      <div onDragOver={(ev) => alloDrop(ev)} onDrop={(ev) => drop(ev)} style={styles.panier} className="fs-6 ">
         &nbsp; <br />
         {panier.map((user) => (
           <div key={user.id} className="col-6 col-xl-4 ms-0 swing-top-fwd" id={user.id} style={{ ...styles.item, maxWidth: "20rem" }}>
