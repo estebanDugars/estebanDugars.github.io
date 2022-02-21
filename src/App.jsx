@@ -1,16 +1,16 @@
 import "./App.css";
 import Navbar from "./Navbar";
-/* import HomePage from "./Pages/HomePage";
-import Articles from "./Pages/Articles";
-import Article from "./Pages/Article";
-import Kanban from "./Pages/Kanban";
-import CMS from "./Pages/CMS";
-import { Routes, Route } from "react-router-dom";
-import { userscomments } from "./data/usersComments";
-import dataObj from "./data/imagesFaker";
- */ import Panier from "./Components/Panier";
+import Panier from "./Components/Panier";
 import Themeswitch from "./Components/Themeswitch";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
+import { Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { AtomSpinner } from "react-epic-spinners";
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const Articles = lazy(() => import("./Pages/Articles"));
+const Article = lazy(() => import("./Pages/Article"));
+const Kanban = lazy(() => import("./Pages/Kanban"));
+const Shop = lazy(() => import("./Pages/Shop"));
 
 // Creation d'un Global state au niveau de app
 export let nimp = 10;
@@ -24,6 +24,12 @@ function App({ cssLib }) {
   const [searchField, setSearchField] = useState("");
   const [logged, setLogged] = useState(false);
 
+  const [clicCounter, setClicCounter] = useState(0);
+
+  const panierAdd = () => {
+    setClicCounter(clicCounter + 1);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -34,14 +40,19 @@ function App({ cssLib }) {
         <Navbar logged={logged} setLogged={setLogged} search={setSearchField} />
         <Themeswitch cssLink={cssLib} />
       </header>
-      <Panier logged={logged} setLog={setLogged} search={searchField} />
-      {/* <Routes>
-        <Route path="/" exact element={<HomePage />} />
-        <Route path="/Articles" element={<Articles data={dataObj.data} />} />
-        <Route path="/Article" element={<Article />} />
-        <Route path="/Kanban" element={<Kanban />} />
-        <Route path="/CMS" element={<CMS userscomments={userscomments} />} />
-      </Routes> */}
+      <Panier clicCounter={clicCounter} />
+      <Suspense fallback={<AtomSpinner color="blue" style={{ margin: "0 auto" }} />}>
+        <Routes>
+          <Route path="/" element={<HomePage logged={logged} setLogged={setLogged} />}>
+            <Route path="secret" element={<div>Secret passage</div>} />
+          </Route>
+          <Route path="/Articles" element={<Articles search={searchField} />} />
+          <Route path="/Article" element={<Article />} />
+          {logged && <Route path="/Kanban" element={<Kanban />} />}
+          <Route path="/Shop" element={<Shop addpanier={panierAdd} />} />
+          <Route path="/*" element={<div>404 nowhere to be found</div>}></Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 }
