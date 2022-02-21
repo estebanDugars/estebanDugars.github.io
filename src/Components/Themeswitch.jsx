@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const Themeswitch = ({ cssLink }) => {
-  const [theme, setTheme] = useState("quartz");
+  let currTheme = localStorage.getItem("theme");
+  const [theme, setTheme] = useState(currTheme ? currTheme : "quartz");
 
   useEffect(() => {
-    //let cssLink = document.head.querySelector("#bootswatch");
-    //if (theme === "Morph") {
     cssLink.href = `./bootswatch/${theme.toLowerCase()}/bootstrap.min.css`;
-    //  return;
-    //}
-
-    //cssLink.href = `https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/${theme.toLowerCase()}/bootstrap.min.css`;
+    localStorage.setItem("theme", theme);
   }, [theme, cssLink]);
 
   const test = (ev) => {
@@ -21,7 +17,7 @@ const Themeswitch = ({ cssLink }) => {
       <label htmlFor="exampleSelect1" className="form-label mt-1 p-3">
         Change Theme
       </label>
-      <select onChange={(event) => test(event)} className="form-select" id="exampleSelect1" defaultValue={"quartz"}>
+      <select onChange={(event) => test(event)} className="form-select" id="exampleSelect1" defaultValue={theme}>
         <option value="Materia">Material Theme</option>
         <option value="Sketchy">Sketchy</option>
         <option value="Spacelab">Spacelab</option>
