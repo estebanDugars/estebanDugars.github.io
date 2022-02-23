@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 /* import DataTable from "react-data-table-component"; */
-import KitchenSinkStory from "react-data-table-component";
 
 const styles = {
   loginBut: {
@@ -35,7 +35,7 @@ const HomePage = ({ logged, setLogged }) => {
   return (
     <main>
       <div className="d-flex flex-column align-items-center fs-5 ">
-        <div className="text-start p-2 bd-highlight">
+        <div className="text-start p-2">
           <h1>Page maison</h1>
           <div className="w-100 h-10">
             <hr />
@@ -55,7 +55,7 @@ const HomePage = ({ logged, setLogged }) => {
           )}{" "}
           <br />
           <hr />
-          <MyDataTable />
+          <Wizard />
           <Outlet />
         </div>
       </div>
@@ -65,112 +65,76 @@ const HomePage = ({ logged, setLogged }) => {
 
 export default HomePage;
 
-// A super simple expandable component.
-/* const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>; */
+const Wizard = (props) => {
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+  const [currentStep, setCurrentStep] = useState(1);
 
-const columns = [
-  {
-    name: "Title",
-    selector: (row) => row.title,
-    sortable: true,
-  },
-  {
-    name: "Year",
-    selector: (row) => row.year,
-    sortable: true,
-  },
-];
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    if (currentStep === 1) {
+      setEmailValue(e.target.value);
+    } else {
+      setPasswordValue(e.target.value);
+    }
+  };
 
-const data = [
-  {
-    id: 1,
-    title: "Beetlejuice",
-    year: "1988",
-    price: "21",
-  },
-  {
-    id: 2,
-    title: "Ghostbusters",
-    year: "1984",
-    price: "21",
-  },
-  {
-    id: 3,
-    title: "Beetlejuice",
-    year: "1988",
-    price: "21",
-  },
-  {
-    id: 4,
-    title: "Ghostbusters",
-    year: "1984",
-    price: "21",
-  },
-  {
-    id: 5,
-    title: "Beetlejuice",
-    year: "1988",
-    price: "21",
-  },
-  {
-    id: 6,
-    title: "Ghostbusters",
-    year: "1984",
-    price: "21",
-  },
-  {
-    id: 7,
-    title: "Beetlejuice",
-    year: "1988",
-    price: "21",
-  },
-  {
-    id: 8,
-    title: "Ghostbusters",
-    year: "1984",
-    price: "21",
-  },
-  {
-    id: 9,
-    title: "Beetlejuice",
-    year: "1988",
-    price: "21",
-  },
-  {
-    id: 10,
-    title: "Ghostbusters",
-    year: "1984",
-    price: "21",
-  },
-  {
-    id: 11,
-    title: "Beetlejuice",
-    year: "1988",
-    price: "21",
-  },
-  {
-    id: 12,
-    title: "Ghostbusters",
-    year: "1984",
-    price: "21",
-  },
-];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
-function MyDataTable() {
-  /* return <DataTable columns={columns} data={data} selectableRows expandableRowsComponent={ExpandedComponent} />; */
   return (
-    <KitchenSinkStory
-      direction="auto"
-      columns={columns}
-      data={data}
-      fixedHeaderScrollHeight="300px"
-      pagination
-      responsive
-      selectableRows
-      selectableRowsHighlight
-      selectableRowsRadio="radio"
-      subHeaderAlign="right"
-      subHeaderWrap
-    />
+    <div>
+      <form onSubmit={handleSubmit}>
+        <br />
+        {currentStep === 1 && (
+          <>
+            {" "}
+            <label>
+              Login:
+              <InputStyled type="email" value={emailValue} onChange={handleOnChange} />
+            </label>
+            <br />
+            <NextButton onClick={() => setCurrentStep(2)} className="btn btn-outline-secondary">
+              Next step
+            </NextButton>
+          </>
+        )}
+        {currentStep === 2 && (
+          <>
+            <label>
+              Password:
+              <InputStyled type="password" value={passwordValue} onChange={handleOnChange} />
+            </label>
+            <br />
+            <SubmitButton type="submit" className="btn btn-outline-secondary">
+              Submit
+            </SubmitButton>
+            <PrevButton onClick={() => setCurrentStep(1)} className="btn btn-outline-secondary">
+              Prev step
+            </PrevButton>
+          </>
+        )}
+      </form>
+    </div>
   );
-}
+};
+
+const InputStyled = styled.input`
+  margin-left: 1rem;
+`;
+
+const NextButton = styled.button`
+  float: right;
+  margin-top: 1rem;
+`;
+
+const PrevButton = styled.button`
+  float: left;
+  margin-top: 1rem;
+`;
+
+const SubmitButton = styled.button`
+  float: right;
+  margin-top: 1rem;
+`;
