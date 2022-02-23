@@ -37,3 +37,25 @@ const Themeswitch = ({ cssLink }) => {
 };
 
 export default Themeswitch;
+
+/* 
+pour factorisation
+
+handleChange(value, selectOptionSetter) => {
+  selectOptionSetter(value)
+  // handle other stuff like persisting to store etc
+}
+
+const Dropdown = (props) => {
+const { options } = props;
+const [selectedOption, setSelectedOption] = useState(options[0].value);
+return (
+   <select
+     value={selectedOption}
+     onChange={e => handleChange(e.target.value, setSelectedOption)}>
+     {options.map(o => (
+       <option key={o.value} value={o.value}>{o.label}</option>
+     ))}
+   </select>
+);
+}; */

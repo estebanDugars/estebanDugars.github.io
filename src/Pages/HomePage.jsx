@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { createRef } from "react/cjs/react.production.min";
 import styled from "styled-components";
 /* import DataTable from "react-data-table-component"; */
 
@@ -43,7 +44,7 @@ const HomePage = ({ logged, setLogged }) => {
           {!logged && (
             <form onSubmit={handleSubmit}>
               <label htmlFor="inputField">Value :&nbsp;</label>
-              <input className="my-2" type="text" value={value} onChange={handleChange} placeholder="admin" />
+              <input className="my-2 form-control" type="text" value={value} onChange={handleChange} placeholder="admin" />
               <p>You entered : {value}</p>
               <button className="btn btn-outline-secondary" type="submit">
                 Submit
@@ -70,6 +71,14 @@ const Wizard = (props) => {
   const [passwordValue, setPasswordValue] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
 
+  const emailInput = createRef();
+  const passInput = createRef();
+
+  useEffect(() => {
+    if (currentStep === 1) emailInput.current?.focus();
+    if (currentStep === 2) passInput.current?.focus();
+  }, [currentStep, emailInput, passInput]);
+
   const handleOnChange = (e) => {
     e.preventDefault();
     if (currentStep === 1) {
@@ -92,7 +101,7 @@ const Wizard = (props) => {
             {" "}
             <label>
               Login:
-              <InputStyled type="email" value={emailValue} onChange={handleOnChange} />
+              <InputStyled ref={emailInput} type="email" value={emailValue} onChange={handleOnChange} className="form-control" />
             </label>
             <br />
             <NextButton onClick={() => setCurrentStep(2)} className="btn btn-outline-secondary">
@@ -104,7 +113,7 @@ const Wizard = (props) => {
           <>
             <label>
               Password:
-              <InputStyled type="password" value={passwordValue} onChange={handleOnChange} />
+              <InputStyled ref={passInput} type="password" value={passwordValue} onChange={handleOnChange} className="form-control" />
             </label>
             <br />
             <SubmitButton type="submit" className="btn btn-outline-secondary">
