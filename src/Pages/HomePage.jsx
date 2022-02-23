@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { createRef } from "react/cjs/react.production.min";
 import styled from "styled-components";
@@ -57,6 +57,11 @@ const HomePage = ({ logged, setLogged }) => {
           <br />
           <hr />
           <Wizard />
+          <br />
+          <br />
+          <br />
+          <hr />
+          <Counter />
           <Outlet />
         </div>
       </div>
@@ -70,14 +75,16 @@ const Wizard = (props) => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
+  /* const [isInitialMount, setisInitialMount] = useState(true); */
 
   const emailInput = createRef();
   const passInput = createRef();
+  let prevStep = usePrevious(currentStep);
 
   useEffect(() => {
-    if (currentStep === 1) emailInput.current?.focus();
-    if (currentStep === 2) passInput.current?.focus();
-  }, [currentStep, emailInput, passInput]);
+    if (prevStep === 2 && currentStep === 1) emailInput.current?.focus();
+    if (prevStep === 1 && currentStep === 2) passInput.current?.focus();
+  }, [currentStep, emailInput, passInput, prevStep]);
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -104,7 +111,13 @@ const Wizard = (props) => {
               <InputStyled ref={emailInput} type="email" value={emailValue} onChange={handleOnChange} className="form-control" />
             </label>
             <br />
-            <NextButton onClick={() => setCurrentStep(2)} className="btn btn-outline-secondary">
+            <NextButton
+              onClick={() => {
+                setCurrentStep(2);
+                passInput.current?.focus();
+              }}
+              className="btn btn-outline-secondary"
+            >
               Next step
             </NextButton>
           </>
@@ -119,7 +132,13 @@ const Wizard = (props) => {
             <SubmitButton type="submit" className="btn btn-outline-secondary">
               Submit
             </SubmitButton>
-            <PrevButton onClick={() => setCurrentStep(1)} className="btn btn-outline-secondary">
+            <PrevButton
+              onClick={() => {
+                setCurrentStep(1);
+                emailInput.current?.focus();
+              }}
+              className="btn btn-outline-secondary"
+            >
               Prev step
             </PrevButton>
           </>
@@ -147,3 +166,32 @@ const SubmitButton = styled.button`
   float: right;
   margin-top: 1rem;
 `;
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  //the useRef Hook allows you to persist data between renders
+  const prevCountRef = usePrevious(count);
+  /* useEffect(() => {
+    //assign the ref's current value to the count Hook
+    prevCountRef.current = count;
+  }, [count, prevCountRef]); //run this code when the value of count changes */
+  return (
+    <h1>
+      Now: {count}, before: {prevCountRef}
+      {/*Increment  */}
+      <button onClick={() => setCount((count) => count + 1)}>Increment</button>
+    </h1>
+  );
+};
+
+function usePrevious(value) {
+  // The ref object is a generic container whose current property is mutable ...
+  // ... and can hold any value, similar to an instance property on a class
+  const ref = useRef();
+  // Store current value in ref
+  useEffect(() => {
+    ref.current = value;
+  }, [value]); // Only re-run if value changes
+  // Return previous value (happens before update in useEffect above)
+  return ref.current;
+}
