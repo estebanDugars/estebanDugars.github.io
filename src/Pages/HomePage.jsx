@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { createRef } from "react/cjs/react.production.min";
 import styled from "styled-components";
+import usePrevious from "./Hooks/usePrevious";
 /* import DataTable from "react-data-table-component"; */
 
 const styles = {
@@ -171,10 +172,7 @@ const Counter = () => {
   const [count, setCount] = useState(0);
   //the useRef Hook allows you to persist data between renders
   const prevCountRef = usePrevious(count);
-  /* useEffect(() => {
-    //assign the ref's current value to the count Hook
-    prevCountRef.current = count;
-  }, [count, prevCountRef]); //run this code when the value of count changes */
+
   return (
     <h1>
       Now: {count}, before: {prevCountRef}
@@ -183,15 +181,3 @@ const Counter = () => {
     </h1>
   );
 };
-
-function usePrevious(value) {
-  // The ref object is a generic container whose current property is mutable ...
-  // ... and can hold any value, similar to an instance property on a class
-  const ref = useRef();
-  // Store current value in ref
-  useEffect(() => {
-    ref.current = value;
-  }, [value]); // Only re-run if value changes
-  // Return previous value (happens before update in useEffect above)
-  return ref.current;
-}
