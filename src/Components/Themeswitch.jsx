@@ -19,7 +19,20 @@ const Themeswitch = ({ cssLink }) => {
         Change Theme
       </label>
       <select onChange={(event) => test(event)} className="form-select" id="exampleSelect1" value={theme}>
-        <option value="Materia">Material Theme</option>
+        <option value="superhero">superhero</option>
+        <option value="lumen">lumen</option>
+        <option value="litera">litera</option>
+        <option value="pulse">pulse</option>
+        <option value="simplex">simplex</option>
+        <option value="united">united</option>
+        <option value="zephyr">zephyr</option>
+        <option value="cosmo">cosmo</option>
+        <option value="minty">minty</option>
+        <option value="vapor">vapor</option>
+        <option value="cyborg">cyborg</option>
+        <option value="sandstone">sandstone</option>
+        <option value="yeti">yeti</option>
+        <option value="Materia">Material</option>
         <option value="Sketchy">Sketchy</option>
         <option value="Spacelab">Spacelab</option>
         <option value="Morph">Morph</option>

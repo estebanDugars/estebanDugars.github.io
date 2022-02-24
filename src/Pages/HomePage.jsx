@@ -174,10 +174,12 @@ const Counter = () => {
   const prevCountRef = usePrevious(count);
 
   return (
-    <h1>
+    <>
       Now: {count}, before: {prevCountRef}
       {/*Increment  */}
-      <button onClick={() => setCount((count) => count + 1)}>Increment</button>
-    </h1>
+      <button onClick={() => setCount((count) => count + 1)} className="btn btn-outline-secondary mx-2">
+        Increment
+      </button>
+    </>
   );
 };
