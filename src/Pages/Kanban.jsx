@@ -3,10 +3,12 @@ import { nimp, setNimp } from "../App";
 /* import { useDrag, useDrop } from "react-dnd";
 import { useState } from "react"; */
 import "./about.css";
+import useTitle from "./Hooks/useTitle";
 /* const { nimp } = nimpStateObject; */
 
 const Kanban = () => {
   const [state, setState] = useState(nimp);
+  useTitle("Kanban");
 
   return (
     <>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./shop.css";
 import { userscomments } from "./../data/usersComments";
 import { nimp, setNimp } from "../App";
+import useTitle from "./Hooks/useTitle";
 /* const { } = nimpStateObject; */
 
 const styles = {
@@ -66,6 +67,7 @@ const Shop = ({ addpanier }) => {
     setPanier(panierInitial);
     setArticles(boutiqueInitiale);
   };
+  useTitle("Shop");
 
   return (
     <>

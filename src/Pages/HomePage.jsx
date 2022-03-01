@@ -4,6 +4,7 @@ import { createRef } from "react/cjs/react.production.min";
 import styled from "styled-components";
 import usePrevious from "./Hooks/usePrevious";
 /* import DataTable from "react-data-table-component"; */
+import useTitle from "./Hooks/useTitle";
 
 const styles = {
   loginBut: {
@@ -33,6 +34,8 @@ const HomePage = ({ logged, setLogged }) => {
       setValue("");
     }
   };
+
+  useTitle("Page Maison");
 
   return (
     <main>

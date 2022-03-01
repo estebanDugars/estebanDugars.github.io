@@ -1,5 +1,6 @@
 import React from "react";
 import dataObj from "./../data/imagesFaker";
+import useTitle from "./Hooks/useTitle";
 
 const styles = {
   /*  div: { width: "250px", display: "inline-block", margin: "0.5rem" },
@@ -15,6 +16,7 @@ const Articles = ({ search }) => {
   let dataf = datas.filter((user) => {
     return re.test(user.first_name) || re.test(user.last_name);
   });
+  useTitle("Articles");
 
   return (
     <>

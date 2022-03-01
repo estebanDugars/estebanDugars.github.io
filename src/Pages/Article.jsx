@@ -1,6 +1,9 @@
 import React from "react";
+import useTitle from "./Hooks/useTitle";
 
 const Article = () => {
+  useTitle("Article");
+
   return (
     <>
       <h1>Article</h1>
