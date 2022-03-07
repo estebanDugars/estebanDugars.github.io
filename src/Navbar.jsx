@@ -33,7 +33,7 @@ const Navbar = ({ logged, setLogged, search }) => {
     const myToast = `<div id="toast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style='position:absolute;left:0rem;top:0rem;color:red;pointerEvents: none'>
         <div class="toast-header">
           <strong class="me-auto">Bootstrap</strong>
-          <small>${new Date().getTime()}</small>
+          <small>${new Date().toTimeString()}</small>
           <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
             <span aria-hidden="true"></span>
           </button>
@@ -59,7 +59,7 @@ const Navbar = ({ logged, setLogged, search }) => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary rounded-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary rounded-top">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -76,21 +76,21 @@ const Navbar = ({ logged, setLogged, search }) => {
         <div className="navbar-collapse collapse" id="navbarColor01">
           <ul className="navbar-nav me-auto">
             <span> &hearts;</span>
-            <NavLink className="btn btn-outline-secondary " to="/">
+            <NavLink className="btn btn-secondary " to="/">
               Home
             </NavLink>
-            <NavLink className="btn btn-outline-secondary" to="/Articles">
+            <NavLink className="btn btn-secondary" to="/Articles">
               Articles
             </NavLink>
-            <NavLink className="btn btn-outline-secondary" to="/Article">
+            <NavLink className="btn btn-secondary" to="/Article">
               Article
             </NavLink>
             {logged && (
-              <NavLink className="btn btn-outline-secondary" to="/Kanban">
+              <NavLink className="btn btn-secondary" to="/Kanban">
                 Kanban
               </NavLink>
             )}
-            <NavLink className="btn btn-outline-secondary" to="/Shop">
+            <NavLink className="btn btn-secondary" to="/Shop">
               Shop
             </NavLink>
             <form className="d-lg-flex">

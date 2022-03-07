@@ -32,7 +32,7 @@ function App({ cssLib }) {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header text-black bg-secondary">
         <p className="App-logo" style={{ pointerEvents: "none" }}>
           LOGO
         </p>

@@ -75,6 +75,7 @@ const Shop = ({ addpanier }) => {
       <h2>Liste des courses </h2>
       <p>Vos articles ici {nimpstate}</p>
       <button
+        className="btn btn-secondary"
         onClick={() => {
           setNimpstate(setNimp());
         }}
