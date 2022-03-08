@@ -14,7 +14,7 @@ const Kanban = () => {
     <>
       <h1>Kanban {state}</h1>
       <button
-        className="btn btn-secondary"
+        className="btn btn-outline-primary"
         onClick={() => {
           setState(setNimp());
         }}
