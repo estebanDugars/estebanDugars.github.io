@@ -1,18 +1,71 @@
-# Getting Started with Create React App
+# Première React app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Problèmes rencontrés et leurs solutions
 
-In the project directory, you can run:
+Version asynchrone de setState peut être problèmatique (racing condition : statements inversion)
 
-### `npm start`
+**Todo app** on `page maison`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `code problèmatique : racing condition avec setState`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```javascript
+const Todos = () => {
+  const [todos, setTodos] = useState([]);
+  const countref = useRef(0);
+  const input = useRef();
+
+  const createTodo = (ev) => {
+    ev.preventDefault();
+    //setTodos((arr) => [...arr, countref.current]); VERSION ASYNCHRONE => inversion "sometimes"
+    countref.current += 1; // this here work
+    setTodos([...todos, countref.current]); // was happening after next line the second time
+    // countref.current += 1; this here doesn't always work
+  };
+
+  // ueh snippet for useEffect : CTRL + SHIFT + P command palette THEN snippet
+  useEffect(() => {
+    
+    //countref.current += 1;
+
+    console.log("rendering");
+    console.log(todos);
+    console.log(countref.current);
+  });
+```
+**explication**
+
+every setState has two version : with a new state OR function, callback
+
+`SOLUTION`
+
+either use the new state version which is in sync
+or the callback version with useEffect as an after "inside effect" on the ref.
+It is better though when previous state involve or long operation to use async with callback
+
+```javascript
+const createTodo = (ev) => {
+    ev.preventDefault();
+
+    /* setTodos(todos.push({ id: count.current + 1, txt: input.current.value })); */
+    /* setTodos((arr) => [...arr, { id: count.current + 1, txt: input.current.value }]); */
+    setTodos((arr) => [...arr, countref.current]);
+    //setTodos([...todos, countref.current]);
+    //countref.current += 1; //this here doesn't work
+  };
+
+  // ueh snippet for useEffect : CTRL + SHIFT + P command palette THEN snippet
+  useEffect(() => {
+  
+    countref.current += 1;
+
+    console.log("rendering");
+    console.log(todos);
+    console.log(countref.current);
+  });
+```
+
 
 ### `npm test`
 
@@ -47,23 +100,23 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This section has moved here:
 
 ### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This section has moved here:
 
 ### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This section has moved here: 
 
 ### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This section has moved here: 
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This section has moved here:
 
 ### `npm run build` fails to minify
 

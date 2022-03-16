@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { createRef } from "react/cjs/react.production.min";
 import styled from "styled-components";
@@ -66,6 +66,11 @@ const HomePage = ({ logged, setLogged }) => {
           <br />
           <hr />
           <Counter />
+          <hr />
+          <br />
+          <br />
+          <br />
+          <Todos />
           <Outlet />
         </div>
       </div>
@@ -183,6 +188,55 @@ const Counter = () => {
       <button onClick={() => setCount((count) => count + 1)} className="btn btn-outline-secondary mx-2">
         Increment
       </button>
+    </>
+  );
+};
+
+// Todo app
+
+const Todo = ({ todoData }) => {
+  return <div>{todoData}</div>;
+  /* return <div key={todoData.id}>{Children}</div>; */
+};
+
+/* const todoDatas = {
+  id: "",
+  txt: "",
+}; */
+
+const Todos = () => {
+  const [todos, setTodos] = useState([]);
+  const countref = useRef(0);
+  const input = useRef();
+
+  const createTodo = (ev) => {
+    ev.preventDefault();
+
+    /* setTodos(todos.push({ id: count.current + 1, txt: input.current.value })); WRONG */
+    /* setTodos((arr) => [...arr, { id: count.current + 1, txt: input.current.value }]); OBJECT VERSION */
+    countref.current += 1; //this here doesn't work
+    setTodos((arr) => [...arr, countref.current]);
+    //setTodos([...todos, countref.current]);
+  };
+
+  useEffect(() => {
+    // ueh
+    //countref.current += 1;
+
+    console.log("rendering");
+    console.log(todos);
+    console.log(countref.current);
+  });
+
+  return (
+    <>
+      {/* <Todo key={todoData.id}>{todoData.txt} </Todo> */}
+      <form onSubmit={(e) => createTodo(e)}>
+        <input type="text" ref={input} />
+      </form>
+      {todos.map((todoData) => (
+        <Todo key={todoData} todoData={todoData} />
+      ))}
     </>
   );
 };
