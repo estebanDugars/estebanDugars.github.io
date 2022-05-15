@@ -76,21 +76,21 @@ const Navbar = ({ logged, setLogged, search }) => {
         <div className="navbar-collapse collapse" id="navbarColor01">
           <ul className="navbar-nav me-auto">
             <span> &hearts;</span>
-            <NavLink className="btn btn-secondary " to="/blogging/">
+            <NavLink className="btn btn-secondary " to="/">
               Home
             </NavLink>
-            <NavLink className="btn btn-secondary" to="/blogging/Articles">
+            <NavLink className="btn btn-secondary" to="/Articles">
               Articles
             </NavLink>
-            <NavLink className="btn btn-secondary" to="/blogging/Article">
+            <NavLink className="btn btn-secondary" to="/Article">
               Article
             </NavLink>
             {logged && (
-              <NavLink className="btn btn-secondary" to="/blogging/Kanban">
+              <NavLink className="btn btn-secondary" to="/Kanban">
                 Kanban
               </NavLink>
             )}
-            <NavLink className="btn btn-secondary" to="/blogging/Shop">
+            <NavLink className="btn btn-secondary" to="/Shop">
               Shop
             </NavLink>
             <form className="d-lg-flex">
@@ -103,7 +103,7 @@ const Navbar = ({ logged, setLogged, search }) => {
                   className="btn btn-outline-secondary"
                   onClick={() => {
                     setLogged(false);
-                    navigate("/blogging", { replace: true });
+                    navigate("/", { replace: true });
                   }}
                 >
                   LogOut

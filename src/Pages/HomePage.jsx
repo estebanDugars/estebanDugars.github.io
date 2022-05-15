@@ -29,7 +29,7 @@ const HomePage = ({ logged, setLogged }) => {
     event.preventDefault();
     if (validateCredentials()) {
       setLogged(true);
-      navigate("/blogging/Kanban");
+      navigate("/Kanban");
     } else {
       setValue("");
     }
