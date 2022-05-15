@@ -29,7 +29,7 @@ const HomePage = ({ logged, setLogged }) => {
     event.preventDefault();
     if (validateCredentials()) {
       setLogged(true);
-      navigate("/Kanban");
+      navigate("/blogging/Kanban");
     } else {
       setValue("");
     }
@@ -240,3 +240,15 @@ const Todos = () => {
     </>
   );
 };
+
+/* const jonas = {
+  firstName:'jonas',
+  year:1991,
+  calcAge :function(){
+    console.log(this);
+    const isMillenial= function () {
+    console.log(this);
+  }
+    
+  }
+} */

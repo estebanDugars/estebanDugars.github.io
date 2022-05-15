@@ -43,14 +43,14 @@ function App({ cssLib }) {
       <Panier clicCounter={clicCounter} />
       <Suspense fallback={<AtomSpinner color="blue" style={{ margin: "0 auto" }} />}>
         <Routes>
-          <Route path="/" element={<HomePage logged={logged} setLogged={setLogged} />}>
+          <Route path="/blogging/" element={<HomePage logged={logged} setLogged={setLogged} />}>
             <Route path="secret" element={<div>Secret passage</div>} />
           </Route>
-          <Route path="/Articles" element={<Articles search={searchField} />} />
-          <Route path="/Article" element={<Article />} />
-          {logged && <Route path="/Kanban" element={<Kanban />} />}
-          <Route path="/Shop" element={<Shop addpanier={panierAdd} />} />
-          <Route path="/*" element={<div>404 nowhere to be found</div>}></Route>
+          <Route path="/blogging/Articles" element={<Articles search={searchField} />} />
+          <Route path="/blogging/Article" element={<Article />} />
+          {logged && <Route path="/blogging/Kanban" element={<Kanban />} />}
+          <Route path="/blogging/Shop" element={<Shop addpanier={panierAdd} />} />
+          <Route path="/blogging/*" element={<div>404 nowhere to be found</div>}></Route>
         </Routes>
       </Suspense>
     </div>

@@ -17,7 +17,9 @@ const Todos = () => {
   const input = useRef();
 
   const createTodo = (ev) => {
-    ev.preventDefault();
+    ev.preventDefault(); // because of onSubmit, not needed when other event like onClick or onEnter
+    //(onKeydown with key = enter or whatever)
+    
     //setTodos((arr) => [...arr, countref.current]); VERSION ASYNCHRONE => inversion "sometimes"
     countref.current += 1; // this here work
     setTodos([...todos, countref.current]); // was happening after next line the second time
@@ -29,6 +31,7 @@ const Todos = () => {
     
     //countref.current += 1;
 
+    // triggered unconditionnally so every time a render occur
     console.log("rendering");
     console.log(todos);
     console.log(countref.current);
@@ -40,63 +43,52 @@ every setState has two version : with a new state OR function, callback
 
 `SOLUTION`
 
-either use the new state version which is in sync
+~~either use the new state version which is in sync
 or the callback version with useEffect as an after "inside effect" on the ref.
-It is better though when previous state involve or long operation to use async with callback
+It is better though when previous state involve or long operation to use async with callback~~
+
+Wrong! No need for useEffect, just invert setTodos & countref += 1
+Then setTodos happen after always, just adjust initial value for countref to -1 to count from 0 for example
+
+In fact, both form of setState:
+
+(NewState, or (c, props) => { c+props.increment } kind of callback) are async
+
+So, its kind of a closure that is called later, make sure all dependencies are above the call to setState.
+
+Said otherwise, **`call setState last`**
+
 
 ```javascript
 const createTodo = (ev) => {
     ev.preventDefault();
 
-    /* setTodos(todos.push({ id: count.current + 1, txt: input.current.value })); */
-    /* setTodos((arr) => [...arr, { id: count.current + 1, txt: input.current.value }]); */
-    setTodos((arr) => [...arr, countref.current]);
-    //setTodos([...todos, countref.current]);
-    //countref.current += 1; //this here doesn't work
+    countref.current += 1; //this here does work
+    setTodos((arr) => [...arr, countref.current]) || setTodos([...todos, countref.current]);
+    // useEffect not needed   
   };
 
-  // ueh snippet for useEffect : CTRL + SHIFT + P command palette THEN snippet
-  useEffect(() => {
-  
-    countref.current += 1;
+ ```
+ 
+## 
+ 
+![](State%20update%20may%20be%20asynchronous.png)
 
-    console.log("rendering");
-    console.log(todos);
-    console.log(countref.current);
-  });
-```
+![](State%20updates%20are%20merged.png)
 
+##
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
